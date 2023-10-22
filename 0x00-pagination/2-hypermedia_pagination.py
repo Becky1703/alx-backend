@@ -6,7 +6,7 @@ from typing import List, Tuple, Dict
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """Function retrieves the index rnage from a given page an 
+    """Function retrieves the index rnage from a given page and
     its page size"""
     start = (page - 1) * page_size
     end = start + page_size
