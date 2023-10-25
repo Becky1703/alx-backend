@@ -35,13 +35,12 @@ class LFUCache(BaseCaching):
                 break
             ins_pos = pos
         self.keys_freq.pop(mru_pos)
-        self.keys_freq.insert(ins_pos, [mru_key, mru_freq])    
-
+        self.keys_freq.insert(ins_pos, [mru_key, mru_freq])
 
     def put(self, key, item):
         """Function inserts data into cache"""
-        if key or item is None:
-            pass
+        if key is None or item is None:
+            return
         if key not in self.cache_data:
             if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
                 lfu_key, _ = self.keys_freq[-1]
@@ -58,7 +57,7 @@ class LFUCache(BaseCaching):
         else:
             self.cache_data[key] = item
             self.__reorder_items(key)
-            
+
     def get(self, key):
         """Function retrieves an item by key"""
         if key is not None and key in self.cache_data:
