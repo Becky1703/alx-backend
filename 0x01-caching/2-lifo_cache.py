@@ -14,8 +14,8 @@ class LIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Function inserts data into cache"""
-        if key or item is None:
-            pass
+        if key is None or item is None:
+            return
         if key not in self.cache_data:
             if len(self.cache_data) + 1 > BaseCaching.MAX_ITEMS:
                 last_key, _ = self.cache_data.popitem(True)
