@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Flask application"""
+"""Flask Babel application"""
 from flask_babel import Babel
 from flask import Flask, render_template, request
 
@@ -13,13 +13,13 @@ class Config(object):
 
 app = Flask(__name__)
 app.config.from_object(Config)
-app.url_map.strict_slashes = False
+# app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
 @babel.localselector
 def get_locale() -> str:
-    """function selects the best match for the supported language"""
+    """Function selects the best match for the supported language"""
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
