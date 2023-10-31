@@ -4,9 +4,6 @@ from flask_babel import Babel
 from flask import Flask, render_template, request
 
 
-babel = Babel(app)
-
-
 class Config(object):
     """Babel Configuration for the flask application"""
     LANGUAGES = ["en", "fr"]
@@ -17,7 +14,7 @@ class Config(object):
 app = Flask(__name__)
 app.config.from_object(Config)
 app.url_map.strict_slashes = False
-#babel = Babel(app)
+babel = Babel(app)
 
 
 @babel.localselector
