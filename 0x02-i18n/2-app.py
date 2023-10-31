@@ -17,7 +17,7 @@ app.url_map.strict_slashes = False
 babel = Babel(app)
 
 
-@babel.localselector
+@babel.localeselector
 def get_locale() -> str:
     """function selects the best match for the supported language"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
