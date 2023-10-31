@@ -3,11 +3,11 @@
 from flask import Flask, render_template
 
 app = Flask(__name__)
-
+app.url_map.strict_slashes = False
 
 @app.route('/')
 def get_index() -> str:
-    """Defines the home route"""
+    """Defines and returns the home route"""
     return render_template('0-index.html')
 
 
